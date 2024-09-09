@@ -1,13 +1,18 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { MatTableModule } from '@angular/material/table';
+import { PeriodicElement } from '../models/periodicElement';
+import { DataService } from '../services/dataService';
 
 @Component({
   selector: 'app-root',
+  styleUrl: 'app.component.css',
+  templateUrl: 'app.component.html',
   standalone: true,
-  imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  imports: [MatTableModule],
 })
 export class AppComponent {
-  title = 'table-of-elements';
+  dataService = new DataService();
+
+  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
+  dataSource: PeriodicElement[] = this.dataService.getData();
 }
