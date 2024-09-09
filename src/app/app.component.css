@@ -7,3 +7,10 @@ td:hover {
   cursor: pointer;
   transition: background-color 0.3s;
 }
+
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
