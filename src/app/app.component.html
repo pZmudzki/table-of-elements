@@ -1,37 +1,30 @@
-<mat-form-field>
+<mat-form-field class="searchInput">
   <mat-label>Search</mat-label>
   <input matInput placeholder="Search" (input)="onInputChange($event)" />
 </mat-form-field>
 @if(!loading){
 <table mat-table [dataSource]="data">
-  <!-- Position Column -->
-  <ng-container matColumnDef="position">
-    <th mat-header-cell *matHeaderCellDef>No.</th>
-    <td mat-cell *matCellDef="let element">
-      <button (click)="openDialog({ key: 'name', value: element.position })">
-        {{ element.position }}
-      </button>
+  <!-- Dynamically generate table columns -->
+  @for(column of displayedColumns; track $index) {
+
+  <ng-container matColumnDef="{{ column }}">
+    <th mat-header-cell *matHeaderCellDef>{{ column | titlecase }}</th>
+    <td
+      mat-cell
+      *matCellDef="let element"
+      (click)="
+        openDialog({
+          id: element.position,
+          column: column,
+          value: element[column]
+        })
+      "
+    >
+      {{ element[column] }}
     </td>
   </ng-container>
 
-  <!-- Name Column -->
-  <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef>Name</th>
-    <td mat-cell *matCellDef="let element">{{ element.name }}</td>
-  </ng-container>
-
-  <!-- Weight Column -->
-  <ng-container matColumnDef="weight">
-    <th mat-header-cell *matHeaderCellDef>Weight</th>
-    <td mat-cell *matCellDef="let element">{{ element.weight }}</td>
-  </ng-container>
-
-  <!-- Symbol Column -->
-  <ng-container matColumnDef="symbol">
-    <th mat-header-cell *matHeaderCellDef>Symbol</th>
-    <td mat-cell *matCellDef="let element">{{ element.symbol }}</td>
-  </ng-container>
-
+  }
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 </table>

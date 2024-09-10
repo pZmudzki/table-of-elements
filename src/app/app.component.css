@@ -2,6 +2,10 @@ table {
   width: 100%;
 }
 
+.searchInput {
+  width: 100%;
+}
+
 td:hover {
   background-color: #eee;
   cursor: pointer;

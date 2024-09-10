@@ -1,8 +1,7 @@
 <h2 mat-dialog-title>Edit selected value</h2>
 <mat-dialog-content>
-  <p>Key: {{ data.key }}</p>
+  <p>Column: {{ data.column | titlecase }}</p>
   <mat-form-field>
-    <mat-label>Favorite Animal</mat-label>
     <input matInput [(ngModel)]="value" />
   </mat-form-field>
 </mat-dialog-content>
