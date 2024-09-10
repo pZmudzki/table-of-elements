@@ -1,5 +1,9 @@
+<mat-form-field>
+  <mat-label>Search</mat-label>
+  <input matInput placeholder="Search" (input)="onInputChange($event)" />
+</mat-form-field>
 @if(!loading){
-<table mat-table [dataSource]="data" class="mat-elevation-z8">
+<table mat-table [dataSource]="data">
   <!-- Position Column -->
   <ng-container matColumnDef="position">
     <th mat-header-cell *matHeaderCellDef>No.</th>
