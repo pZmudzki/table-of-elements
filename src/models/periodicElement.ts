@@ -4,3 +4,5 @@ export interface PeriodicElement {
   weight: number;
   symbol: string;
 }
+
+export const PeriodicElementsColumns = ['position', 'name', 'weight', 'symbol'];
